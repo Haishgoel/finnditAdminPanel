@@ -1,0 +1,68 @@
+<div style="display: flex; gap: 25px; align-items: center;" >
+  <h1>Categories</h1>
+
+  
+    <button 
+      nz-button 
+      nz-dropdown [nzDropdownMenu]="menu" 
+      nzType="primary"
+      nzShape="round"
+      >
+      <span nzType="download"></span>
+    Add new
+    </button>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu>
+        <li nz-menu-item (click)="addParentCategory()">Add parent category</li>
+        <li nz-menu-item (click)="addsubCategoryL1()">Add sub-category L1</li>
+        <li nz-menu-item (click)="addsubCategoryL2()">Add sub-category L2</li>
+      </ul>
+    </nz-dropdown-menu>
+</div>
+
+<nz-table #basicTable [nzData]="listOfCategory">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Sub Categories</th>
+      <th>Product & Services</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.name }}</td>
+      <td>{{ data.subCategories }}</td>
+      <td>{{ data.productService }}</td>
+      <td>{{ data.status }}</td>
+      <td>
+        <a (click)="editCategory()" nz-icon [nzType]="'edit'"></a>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <a (click)="activeDeactivate()" nz-icon [nzType]="'close'"></a>
+        <nz-modal
+          [(nzVisible)]="isCategoryStatus"
+          nzTitle="Deactivate"
+          (nzOnCancel)="handleCancelStatus()"
+          (nzOnOk)="handleOkStatus()"
+        >
+          <ng-container *nzModalContent>
+            <p>Are you sure you want to Deactivate this?</p>
+          </ng-container>
+        </nz-modal>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <a (click)="deleteCategory()" nz-icon [nzType]="'delete'"></a>
+        <nz-modal
+          [(nzVisible)]="isCategoryDelete"
+          nzTitle="Delete"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+        >
+          <p *nzModalContent>Are you sure you want to delete this?</p>
+        </nz-modal>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

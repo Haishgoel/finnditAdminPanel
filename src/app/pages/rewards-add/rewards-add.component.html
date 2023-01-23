@@ -1,0 +1,96 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <h1>Add Rewards</h1>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="nickname"
+      nzRequired
+      nzTooltipTitle="Employee Full Names"
+    >
+      <span>Reward Title</span>
+    </nz-form-label>
+
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Fullnames!"
+    >
+      <input nz-input id="nickname" formControlName="names" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="empNo"
+      nzRequired
+      nzTooltipTitle="Employee Number i.e. 00300305"
+    >
+      <span>Select Reward Category</span>
+    </nz-form-label>
+
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Number!"
+    >
+      <input nz-input id="empNo" formControlName="employeeno" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="AENo"
+      nzRequired
+      nzTooltipTitle=" Enter AE Number from PMEC or S Number"
+    >
+      <span>Rewards Point</span>
+    </nz-form-label>
+
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Number!"
+    >
+      <input nz-input id="AENo" formControlName="aes" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="AENo"
+      nzRequired
+      nzTooltipTitle=" Enter AE Number from PMEC or S Number"
+    >
+      <span>Source Published Date</span>
+    </nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Number!"
+    >
+      <input nz-input id="AENo" formControlName="aes" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <!-- <nz-form-item nz-row class="register-area"> -->
+    <button nz-button nzType="default">Cancel</button>
+    <button nz-button nzType="default">Preview</button>
+    <button nz-button nzType="default">Publish</button>
+    <!-- <nz-form-control [nzSpan]="14" [nzOffset]="6">
+      <button nz-button nzType="primary">Cancel</button>
+    </nz-form-control> -->
+  <!-- </nz-form-item> -->
+</form>

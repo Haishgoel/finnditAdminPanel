@@ -1,0 +1,47 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <h1>Add Parent Categories</h1>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="AENo"
+      nzRequired
+      nzTooltipTitle=" Enter AE Number from PMEC or S Number"
+    >
+      <span>Parent Category Name</span>
+    </nz-form-label>
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Number!"
+    >
+      <input nz-input id="AENo" formControlName="aes" />
+    </nz-form-control>
+  </nz-form-item>
+
+  <nz-upload
+  class="avatar-uploader"
+  nzAction="https://www.mocky.io/v2/5cc8019d300000980a055e76"
+  nzName="avatar"
+  nzListType="picture-card"
+  [nzShowUploadList]="false"
+  [nzBeforeUpload]="beforeUpload"
+  (nzChange)="handleChange($event)"
+>
+  <ng-container *ngIf="!avatarUrl">
+    <span class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></span>
+    <div class="ant-upload-text">Upload</div>
+  </ng-container>
+  <img *ngIf="avatarUrl" [src]="avatarUrl" style="width: 100%" />
+</nz-upload>
+
+    <button nz-button nzType="default">Cancel</button>
+    <button nz-button nzType="default">Save</button>
+   
+</form>

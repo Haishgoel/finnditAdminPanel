@@ -1,0 +1,34 @@
+<form
+  nz-form
+  nzLayout="vertical"
+  [formGroup]="validateForm"
+  (ngSubmit)="submitForm()"
+>
+  <h1>Edit Category</h1>
+
+  <nz-form-item>
+    <nz-form-label
+      [nzSm]="6"
+      [nzXs]="24"
+      nzFor="nickname"
+      nzRequired
+      nzTooltipTitle="Employee Full Names"
+    >
+      <span>Category Name</span>
+    </nz-form-label>
+
+    <nz-form-control
+      [nzSm]="14"
+      [nzXs]="24"
+      nzErrorTip="Please input employee Fullnames!"
+    >
+      <input nz-input id="nickname" formControlName="names" />
+    </nz-form-control>
+  </nz-form-item>
+
+
+
+
+
+    <button nz-button nzType="default">Save</button>
+</form>
