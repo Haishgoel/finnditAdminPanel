@@ -1,0 +1,25 @@
+[nz-icon] {
+    margin-right: 6px;
+    font-size: 16px;
+    margin: 2px 0px 0px -3px;
+  }
+
+  [nz-button] {
+    margin-right: 8px;
+    margin-bottom: 12px;
+    float: left;
+  }
+
+  nz-button-group [nz-button] {
+    margin-right: 0;
+  }
+
+
+ 
+  .b2 {
+    margin-left: 15px;
+  }
+  .b3 {
+    margin-left: 10px;
+  }
+

@@ -1,0 +1,181 @@
+<div class="tabs">
+    <nav class="tabs__nav">
+      <h1>Merchant Banners</h1>
+  <div>
+      <button
+        nz-button
+        nzShape="round"
+        (click)="show('one')"
+        class="tabs__nav-item"
+        [class.tabs__nav-item--on]="selectedTab === 'one'"
+      >
+        <span nzType="download"></span>
+        Banner
+      </button>
+  
+      <button
+        nz-button
+        nzShape="round"
+        (click)="show('two')"
+        class="tabs__nav-item b2"
+        [class.tabs__nav-item--on]="selectedTab === 'two'"
+      >
+        <span nzType="download"></span>
+        Price Configuration
+      </button>
+
+      <button
+        nz-button
+        nzShape="round"
+        (click)="show('three')"
+        class="tabs__nav-item b3"
+        [class.tabs__nav-item--on]="selectedTab === 'three'"
+      >
+        <span nzType="download"></span>
+        Media
+      </button>
+
+    </div>  
+  
+    </nav>
+  
+    <div #tabsContentRef class="tabs__content" [ngSwitch]="selectedTab">
+      <div *ngSwitchCase="'one'" class="tabs__tab">
+        <nz-table #basicTable [nzData]="listOfBanner">
+          <thead>
+            <tr>
+              <th>Placement</th>
+              <th>Position</th>
+              <th>Business</th>
+              <th>Frequency</th>
+              <th>Start Date</th>
+              <th>End Date</th>
+              <th>Approve Status</th>
+              <th>Visibility Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.placement }}</td>
+              <td>{{ data.position }}</td>
+              <td>{{ data.business }}</td>
+              <td>{{ data.frequency }}</td>
+              <td>{{ data.startDate }}</td>
+              <td>{{ data.endDate }}</td>
+              <td>{{ data.approveStatus }}</td>
+              <td>{{ data.visibilityStatus }}</td>
+  
+              <td>
+                <a (click)="activeDeactivateBanner()" nz-icon [nzType]="'close'"></a>
+                <nz-modal
+                  [(nzVisible)]="isBannerStatus"
+                  nzTitle="Deactivate"
+                  (nzOnCancel)="handleCancelBanner()"
+                  (nzOnOk)="handleOkBanner()"
+                >
+                  <ng-container *nzModalContent>
+                    <p>Are you sure you want to Deactivate this?</p>
+                  </ng-container>
+                </nz-modal>
+                <nz-divider nzType="vertical"></nz-divider>
+  
+                <a (click)="deleteBanner()" nz-icon [nzType]="'delete'"></a>
+                <nz-modal
+                  [(nzVisible)]="isBannerDelete"
+                  nzTitle="Delete"
+                  (nzOnCancel)="handleCancelBannerDelete()"
+                  (nzOnOk)="handleOkBannerDelete()"
+                >
+                  <p *nzModalContent>Are you sure you want to delete this?</p>
+                </nz-modal>
+
+                <nz-divider nzType="vertical"></nz-divider>
+              </td>
+            </tr>
+          </tbody>
+        </nz-table>
+      </div>
+
+      <div *ngSwitchCase="'two'" class="tabs__tab">
+        <nz-table #basicTable [nzData]="listOfPriceConfiguration">
+          <thead>
+            <tr>
+              <th>Placement</th>
+              <th>Position</th>
+              <th>Per Impression Price</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.placement}}</td>
+              <td>{{ data.position}}</td>
+              <td>{{ data.perImpressionPrice}}</td>
+              <td>
+                <a (click)="editlistOfPriceConfiguration()" nz-icon [nzType]="'edit'"></a>
+                <nz-divider nzType="vertical"></nz-divider>
+  
+              </td>
+              
+            </tr>
+          </tbody>
+        </nz-table>
+
+      </div>
+
+      <div *ngSwitchCase="'three'" class="tabs__tab">
+        <nz-table #basicTable [nzData]="listOfMedia">
+          <thead>
+            <tr>
+              <th>Background</th>
+              <th>Total Business using this Image</th>
+              <th>Status</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of basicTable.data">
+              <td>{{ data.background}}</td>
+              <td>{{ data.totalBusiness}}</td>
+              <td>{{ data.status}}</td>
+              <td>
+                <a (click)="editMedia()" nz-icon [nzType]="'edit'"></a>
+                <nz-divider nzType="vertical"></nz-divider>
+  
+                <a (click)="activeDeactivateMedia()" nz-icon [nzType]="'close'"></a>
+                <nz-modal
+                  [(nzVisible)]="isMediaStatus"
+                  nzTitle="Deactivate"
+                  (nzOnCancel)="handleCancelMedia()"
+                  (nzOnOk)="handleOkMedia()"
+                >
+                  <ng-container *nzModalContent>
+                    <p>Are you sure you want to Deactivate this?</p>
+                  </ng-container>
+                </nz-modal>
+                <nz-divider nzType="vertical"></nz-divider>
+  
+                <a (click)="deleteMedia()" nz-icon [nzType]="'delete'"></a>
+                <nz-modal
+                  [(nzVisible)]="isMediaDelete"
+                  nzTitle="Delete"
+                  (nzOnCancel)="handleCancelMediaDelete()"
+                  (nzOnOk)="handleOkMediaDelete()"
+                >
+                  <p *nzModalContent>Are you sure you want to delete this?</p>
+                </nz-modal>
+              </td>
+              
+            </tr>
+          </tbody>
+        </nz-table>
+
+       <div style="float: right;">
+        <button nz-button nzType="primary" nzShape="circle" (click)="addMediaImage()"><span nz-icon nzType="plus"></span></button>
+    </div>  
+       
+      </div>
+    </div>
+  </div>
+  

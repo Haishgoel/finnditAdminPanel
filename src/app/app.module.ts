@@ -99,6 +99,9 @@ import { AddSubCategoryL2Component } from './pages/category/add-sub-category-l2/
 import { SingleCategporyDetailComponent } from './pages/category/single-categpory-detail/single-categpory-detail.component';
 import { UsersComponent } from './pages/users/users/users.component';
 import { ListingComponent } from './pages/listing/listing/listing.component';
+import { MerchantBannerComponent } from './pages/merchantBanner/merchant-banner/merchant-banner.component';
+import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
+import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
 
 
 
@@ -118,7 +121,10 @@ import { ListingComponent } from './pages/listing/listing/listing.component';
     AddSubCategoryL2Component,
     SingleCategporyDetailComponent,
     UsersComponent,
-    ListingComponent
+    ListingComponent,
+    MerchantBannerComponent,
+    EditMerchantBannerComponent,
+    EditmediaMerchantBannerComponent
   ],
   imports: [
     BrowserModule,

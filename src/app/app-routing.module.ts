@@ -9,6 +9,9 @@ import { SingleCategporyDetailComponent } from './pages/category/single-categpor
 // import { LoginComponent } from './login/login.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ListingComponent } from './pages/listing/listing/listing.component';
+import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
+import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
+import { MerchantBannerComponent } from './pages/merchantBanner/merchant-banner/merchant-banner.component';
 import { RewardCategoryEditComponent } from './pages/reward-category-edit/reward-category-edit.component';
 import { RewardsAddComponent } from './pages/rewards-add/rewards-add.component';
 import { RewardsEditComponent } from './pages/rewards-edit/rewards-edit.component';
@@ -38,6 +41,9 @@ const routes: Routes = [
   { path: 'categories/detail/:id', component: SingleCategporyDetailComponent},
   { path: 'user', component: UsersComponent},
   { path: 'listing', component: ListingComponent},
+  { path: 'merchantbanner', component: MerchantBannerComponent},
+  { path: 'merchantbanner/price/edit', component: EditMerchantBannerComponent},
+  { path: 'merchantbanner/media/edit', component: EditmediaMerchantBannerComponent}
 ];
 
 @NgModule({
