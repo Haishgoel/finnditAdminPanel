@@ -85,7 +85,7 @@ import { NzGraphModule } from 'ng-zorro-antd/graph';
 import { NzCronExpressionModule } from 'ng-zorro-antd/cron-expression';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { LoginComponent } from './login/login.component';
+// import { LoginComponent } from './login/login.component';
 // import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RewardsComponent } from './pages/rewards/rewards.component';
 import { RewardsEditComponent} from './pages/rewards-edit/rewards-edit.component';
@@ -96,13 +96,16 @@ import { EditCategoryComponent } from './pages/category/edit-category/edit-categ
 import { AddParentCategoryComponent } from './pages/category/add-parent-category/add-parent-category.component';
 import { AddSubCategoryL1Component } from './pages/category/add-sub-category-l1/add-sub-category-l1.component';
 import { AddSubCategoryL2Component } from './pages/category/add-sub-category-l2/add-sub-category-l2.component';
+import { SingleCategporyDetailComponent } from './pages/category/single-categpory-detail/single-categpory-detail.component';
+import { UsersComponent } from './pages/users/users/users.component';
+import { ListingComponent } from './pages/listing/listing/listing.component';
 
-// registerLocaleData(hi);
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
+    // LoginComponent,
     // DashboardComponent,
     RewardsComponent,
     RewardsEditComponent,
@@ -112,7 +115,10 @@ import { AddSubCategoryL2Component } from './pages/category/add-sub-category-l2/
     EditCategoryComponent,
     AddParentCategoryComponent,
     AddSubCategoryL1Component,
-    AddSubCategoryL2Component
+    AddSubCategoryL2Component,
+    SingleCategporyDetailComponent,
+    UsersComponent,
+    ListingComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,123 @@
+<div style="display: flex; gap: 25px; align-items: center">
+  <h1>Listing</h1>
+
+  <button nz-button nzType="primary" nzShape="round" (click)="assignSubAdmin()">
+    <span nzType="download"></span>
+    Assign Sub-admin
+  </button>
+  <nz-modal
+          [(nzVisible)]="isAssignSubAdmin"
+          nzTitle="Assign Sub-admin"
+          (nzOnCancel)="handleCancelAdmin()"
+          (nzOnOk)="handleOkAdmin()"
+        >
+          <ng-container *nzModalContent>
+            <p>Selected Business*</p>
+            
+            <nz-form-label>Selected Sub-Admin</nz-form-label>
+              <nz-form-control>
+                <nz-select nzPlaceHolder="Please select an Sub-Admin"></nz-select>
+              </nz-form-control>
+          </ng-container>
+        </nz-modal>
+</div>
+
+<nz-table #basicTable [nzData]="listOfListing">
+  <thead>
+    <tr>
+      <th>Businesses</th>
+      <th>Full Registration Name</th>
+      <th>Owner Name</th>
+      <th>phone Number</th>
+      <th>email</th>
+      <th>Category</th>
+      <th>Subscription Plans</th>
+      <th>Status</th>
+      <th>Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of basicTable.data">
+      <td>{{ data.business }}</td>
+      <td>{{ data.registerName }}</td>
+      <td>{{ data.ownerName }}</td>
+      <td>{{ data.phoneNumber }}</td>
+      <td>{{ data.email }}</td>
+      <td>{{ data.category }}</td>
+      <td>{{ data.subscriptionPlan }}</td>
+      <td>{{ data.status }}</td>
+      <td>
+        <a (click)="activeDeactivate()" nz-icon [nzType]="'close'"></a>
+        <nz-modal
+          [(nzVisible)]="isListingStatus"
+          nzTitle="Deactivate"
+          (nzOnCancel)="handleCancelStatus()"
+          (nzOnOk)="handleOkStatus()"
+        >
+          <ng-container *nzModalContent>
+            <p>Are you sure you want to Deactivate this?</p>
+          </ng-container>
+        </nz-modal>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <span
+          nz-icon
+          nzType="check"
+          nzTheme="outline"
+          (click)="showModal()"
+        ></span>
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle="Reject"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+        >
+          <ng-container *nzModalContent>
+            <p>Reason*</p>
+            <p>Note: The reason will be shared with merchant.</p>
+            <nz-form-label>Description</nz-form-label>
+            <nz-form-control>
+              <textarea
+                nz-input
+                placeholder="please enter url description"
+                [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              ></textarea>
+            </nz-form-control>
+          </ng-container>
+        </nz-modal>
+
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        <nz-divider nzType="vertical"></nz-divider>
+
+        <span
+          nz-icon
+          nzType="upload"
+          nzTheme="outline"
+          (click)="showModal()"
+        ></span>
+
+        <nz-modal
+          [(nzVisible)]="isVisible"
+          nzTitle="Send for modification"
+          (nzOnCancel)="handleCancel()"
+          (nzOnOk)="handleOk()"
+        >
+          <ng-container *nzModalContent>
+            <p>Reason*</p>
+            <p>Note: The reason will be shared with merchant.</p>
+            <nz-form-label>Description</nz-form-label>
+            <nz-form-control>
+              <textarea
+                nz-input
+                placeholder="please enter url description"
+                [nzAutosize]="{ minRows: 4, maxRows: 4 }"
+              ></textarea>
+            </nz-form-control>
+          </ng-container>
+        </nz-modal>
+      </td>
+    </tr>
+  </tbody>
+</nz-table>

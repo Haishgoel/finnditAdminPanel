@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 
 interface Person {
+  id: number,
   name: string;
   subCategories: number;
   productService: number;
@@ -18,6 +19,14 @@ export class DetailCategoryComponent {
   isCategoryDelete = false;
 
   constructor(private router:Router,) {}
+
+
+  //detail Category
+
+  // getListOfCategory(data: Person): void {
+  //   alert(JSON.stringify(data))
+  //   this.router.navigate(['/categories/detail/:id'])
+  // }
 
 
 
@@ -72,18 +81,21 @@ export class DetailCategoryComponent {
 
   listOfCategory: Person[] = [
     {
+      id:1,
       name: 'John Brown',
       subCategories: 32,
       productService: 2,
       status:"active"
     },
     {
+      id:2,
       name: 'Jim Green',
       subCategories: 42,
       productService: 2,
       status:"active"
     },
     {
+      id: 3,
       name: 'Joe Black',
       subCategories: 32,
       productService: 6,
