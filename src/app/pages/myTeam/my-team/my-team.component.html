@@ -1,0 +1,50 @@
+<div style="display: flex; gap: 25px; align-items: center;" >
+    <h1>Users</h1>
+  </div>
+  
+  <nz-table #basicTable [nzData]="listOfUsers">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Phone Number</th>
+        <th>Location</th>
+        <th>Tier</th>
+        <th>Points earned</th>
+        <th>Points reedemed</th>
+        <th>Registered on</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of basicTable.data">
+        <td>{{ data.name }}</td>
+        <td>{{ data.email }}</td>
+        <td>{{ data.phoneNumber }}</td>
+        <td>{{ data.location }}</td>
+        <td>{{ data.tier }}</td>
+        <td>{{ data.pointEarned }}</td>
+        <td>{{ data.pointReedemed }}</td>
+        <td>{{ data.registeredOn }}</td>
+        <td>{{ data.status }}</td>
+        <td>
+  
+          <a (click)="activeDeactivate()" nz-icon [nzType]="'close'"></a>
+          <nz-modal
+            [(nzVisible)]="isCategoryStatus"
+            nzTitle="Deactivate"
+            (nzOnCancel)="handleCancelStatus()"
+            (nzOnOk)="handleOkStatus()"
+          >
+            <ng-container *nzModalContent>
+              <p>Are you sure you want to Deactivate this?</p>
+            </ng-container>
+          </nz-modal>
+          <nz-divider nzType="vertical"></nz-divider>
+
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+  

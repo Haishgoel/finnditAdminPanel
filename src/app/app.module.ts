@@ -102,6 +102,7 @@ import { ListingComponent } from './pages/listing/listing/listing.component';
 import { MerchantBannerComponent } from './pages/merchantBanner/merchant-banner/merchant-banner.component';
 import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
+import { MyTeamComponent } from './pages/myTeam/my-team/my-team.component';
 
 
 
@@ -124,7 +125,8 @@ import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmed
     ListingComponent,
     MerchantBannerComponent,
     EditMerchantBannerComponent,
-    EditmediaMerchantBannerComponent
+    EditmediaMerchantBannerComponent,
+    MyTeamComponent
   ],
   imports: [
     BrowserModule,
