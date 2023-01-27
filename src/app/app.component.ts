@@ -7,5 +7,5 @@ import {Router} from "@angular/router"
 })
 export class AppComponent {
   isCollapsed = false;
-  // constructor (public _router:Router){}
+
 }

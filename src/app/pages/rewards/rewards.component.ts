@@ -1,18 +1,10 @@
-import { Component } from '@angular/core';
-import { ViewChild } from "@angular/core";
-import { Router } from '@angular/router';
-
-// import { ElementRef } from "@angular/core";
-
-interface Person {
-  key: string;
-  title: string;
-  category: string;
-  type: string;
-  reedemPoints: number,
-  expiryDate:string,
-  status: string
-}
+import { Component, ViewChild } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ServicesService } from 'src/app/services/services.service';
+import { apiUrl } from 'src/app/global/global';
+import { HttpParams, HttpClient } from "@angular/common/http";
+import swal from "sweetalert2";
+import { NzResultComponent } from 'ng-zorro-antd/result';
 
 @Component({
   selector: 'app-monitor',
@@ -26,12 +18,62 @@ export class RewardsComponent {
   isVisible = false;
   isVisibleStatus = false;
   isCategoryStatus = false;
-  isCategoryDelete = false;
+  rewardData : any = [];
+  rewardCategoryData : any ;
+  categories: any =[];
+  id: any
+
+  selectedUser: any;
+
+onRowClick(data: any) {
+    this.selectedUser = data;
+	console.log("hello single user")
+}
+
+
+  ngOnInit(): void {
+	this.rewardListingData();
+    this.rewardCategoryListingData();
+	}
+
+  // Reward  Listing Detail
+  rewardListingData() {
+		let params = new HttpParams(); 
+		// let skip = this.pagination.skip;
+		// params = params.append('skip', skip.toString());
+		// params = params.append('limit', '10');
+		this.api.rewardDetail(apiUrl._rewardListing)
+			.subscribe(res=> {
+				//   this.loading = false;
+				// this.currentPage = skip == 0 ? 1 : (skip / 10)
+				// this.pagination.totalItems = res.data.count;
+				this.rewardData = res;
+        // this.categories = this.rewardData.categories
+        
+			})
+	}
+// Reward Category Listing Detail
+  rewardCategoryListingData() {
+		let params = new HttpParams(); 
+		// let skip = this.pagination.skip;
+		// params = params.append('skip', skip.toString());
+		// params = params.append('limit', '10');
+		this.api.rewardCategoryDetail(apiUrl._rewardCategoryListing)
+			.subscribe(res=> {
+				//   this.loading = false;
+				// this.currentPage = skip == 0 ? 1 : (skip / 10)
+				// this.pagination.totalItems = res.data.count;
+				this.rewardCategoryData = res;
+
+        // JSON.stringify(this.rewardData)
+        
+			})
+	}
 
   public selectedTab: "one" | "two";
   // public tabsContentRef!: ElementRef;
 
-  constructor(private router:Router,) {
+  constructor(private router:Router, private api: ServicesService, private http: HttpClient, private route: ActivatedRoute) {
 		this.selectedTab = "one";
 	}
 
@@ -39,15 +81,17 @@ export class RewardsComponent {
     this.router.navigate(['/rewards/edit']);
   }
 
-  addReward(): void {
+  addRewardCategories(): void {
     this.router.navigate(['/rewards/add']);
   }
 
-  //edit RewardCategories
-
-  editRewardCategory(): void {
-    this.router.navigate(['/rewardscategory/edit']);
+  //CLICK ON BUTTON REWARD CATEGORIES
+  editRewardCategory(data: any): void {
+    var id = data.id
+    var categoryName = data.categoryName    
+    this.router.navigate([`/rewardscategory/edit/`+id]);
   }
+
 
   // delete Reward
   deleteReward(): void {
@@ -80,60 +124,74 @@ export class RewardsComponent {
     this.isVisibleStatus = false;
   }
 
-// active Deactivate status reward Category
-  activeDeactivateCategory(): void {
-    this.isCategoryStatus = true;
+// active Deactivate status reward Category API
+  activeDeactivateCategory(id: any, status: any): void {
+    swal.fire({
+			title: '<h2>' + status + '</h2>',
+			html: status == 1 ? '<p>Are you sure you want to Active this??</p>' : '<p>Are you sure you want to Deactive this?</p>',
+			showCloseButton: false,
+			showCancelButton: true,
+			focusConfirm: false,
+			//  confirmButtonText: 'Delete ',
+			confirmButtonAriaLabel: 'Active',
+			cancelButtonAriaLabel: 'Cancel',
+			confirmButtonColor: '#318337',
+			cancelButtonColor: '#18225a',
+			confirmButtonText:
+				'Active',
+			cancelButtonText:
+				'Cancel',
+			reverseButtons: true,
+			width: 500
+		}).then(() => {
+			// if (status) {
+          const data = {
+            'id': id.id,
+            'status': status === 0 ? 1 : 0,
+        }		
+				this.api.putData(apiUrl._rewardCategoriesBlock, data)
+					.subscribe(res => {
+						this.rewardCategoryListingData();
+					})
+			// }
+		});
   }
 
-  handleOkCategory(): void {
-    console.log('Button ok clicked!');
-    this.isCategoryStatus = false;
-  }
-
-  handleCancelCategory(): void {
-    console.log('Button cancel clicked!');
-    this.isCategoryStatus = false;
-  }
-
-// delete Reward Category
-  deleteRewardCategory(): void {
-    this.isCategoryDelete = true;
-  }
-
-  handleOkDelete(): void {
-    console.log('Button ok clicked!');
-    this.isCategoryDelete = false;
-  }
-
-  handleCancelDelete(): void {
-    console.log('Button cancel clicked!');
-    this.isCategoryDelete = false;
+// delete Reward Category API
+  deleteRewardCategory(id:any): void {
+    console.log("delete category===>",id.id)
+    swal.fire({
+			// title: '<h2>' + '</h2>',
+			html:  '<p>Are you sure you want to Delete this??</p>',
+			showCloseButton: false,
+			showCancelButton: true,
+			focusConfirm: false,
+			 confirmButtonText: 'Delete',
+			confirmButtonAriaLabel: 'Active',
+			cancelButtonAriaLabel: 'Cancel',
+			confirmButtonColor: '#318337',
+			cancelButtonColor: '#18225a',
+			cancelButtonText:
+				'Cancel',
+			reverseButtons: true,
+			width: 500
+		}).then(() => {
+			// if (status) {
+          const data = {
+            'id': id.id,
+        }		
+				this.api.deleteData(apiUrl._deleteRewardCategories, id.id)
+					.subscribe(res => {
+						this.rewardCategoryListingData();
+					})
+			// }
+		});
   }
 
   public show( tab: "one" | "two" ) : void {
 		this.selectedTab = tab;
-    // this.listOfData();
+    
 		// this.scrollTabContentToTop();
 	}
-
-  listOfRewards= [
-    {
-      key: '1',
-      title: 'John Brown',
-      category: 'electronis',
-      type: 'New York No. 1 Lake Park',
-      reedemPoints: 10,
-      expiryDate: '2023-10-01',
-      status: 'Active'
-    }
-  ];
-
-  listOfRewardsCategories= [
-    {
-      category: 'vaneet',
-      status: 'Active'
-    }
-  ];
- 
 
 }

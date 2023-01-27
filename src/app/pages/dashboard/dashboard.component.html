@@ -12,19 +12,45 @@
       </a>
     </div>
     <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-      <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
-        <ul>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/route/monitor">Monitor</a>
-          </li>
-          <li nz-menu-item nzMatchRouter>
-            <a routerLink="/route/workplace">Workplace</a>
-          </li>
-        </ul>
+      <li nz-menu-item>
+        <span nz-icon nzType="home" nzTheme="outline"></span>
+        <span routerLink="/dashboard">Dashboard</span>
       </li>
       <li nz-menu-item>
-        <span nz-icon nzType="Rewards"></span>
-        <span routerLink="/route/rewards">Rewards</span>
+        <span nz-icon nzType="file"></span>
+        <span routerLink="/business">Business</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="file"></span>
+        <span routerLink="/categories">Categories</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="user" nzTheme="outline"></span>
+        <span routerLink="/user">Users</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="unordered-list" nzTheme="outline"></span>
+        <span routerLink="/listing">Listing</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="database" nzTheme="outline"></span>
+        <span routerLink="/rewards">Rewards</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="form" nzTheme="outline"></span>
+        <span routerLink="/forms">Forms</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="dollar" nzTheme="outline"></span>
+        <span routerLink="/adminbanner">Admin Banners</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="usergroup-add" nzTheme="outline"></span> 
+        <span routerLink="/merchantbanner">Merchant Banners</span>
+      </li>
+      <li nz-menu-item>
+        <span nz-icon nzType="team" nzTheme="outline"></span> 
+        <span routerLink="/team">My Team</span>
       </li>
     </ul>
   </nz-sider>
@@ -46,3 +72,8 @@
     </nz-content>
   </nz-layout>
 </nz-layout> -->
+
+
+
+
+<!-- <router-outlet></router-outlet> -->

@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import {
   FormBuilder,
-  FormControl,
   FormGroup,
   Validators,
 } from '@angular/forms';
-
-import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
+import { Router,ActivatedRoute } from '@angular/router';
+import { apiUrl } from 'src/app/global/global';
+import { ServicesService } from 'src/app/services/services.service';
 
 @Component({
   selector: 'app-rewards-add',
@@ -15,56 +15,33 @@ import { NzFormTooltipIcon } from 'ng-zorro-antd/form';
 })
 export class RewardsAddComponent {
 
-  validateForm!: FormGroup;
-  captchaTooltipIcon: NzFormTooltipIcon = {
-    type: 'info-circle',
-    theme: 'twotone',
-  };
-
-  submitForm(): void {
-    if (this.validateForm.valid) {
-      console.log('submit', this.validateForm.value);
-    } else {
-      Object.values(this.validateForm.controls).forEach((control) => {
-        if (control.invalid) {
-          control.markAsDirty();
-          control.updateValueAndValidity({ onlySelf: true });
-        }
-      });
-    }
+  public categoryAddForm! :FormGroup
+  submitted=false
+  id:any
+  constructor(private formBuilder: FormBuilder, private api: ServicesService, private router: Router, private route: ActivatedRoute) {
   }
 
-  // updateConfirmValidator(): void {
-  //   /** wait for refresh value */
-  //   Promise.resolve().then(() =>
-  //     this.validateForm.controls.checkPassword.updateValueAndValidity()
-  //   );
-  // }
-
-  // confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
-  //   if (!control.value) {
-  //     return { required: true };
-  //   } else if (control.value !== this.validateForm.controls.password.value) {
-  //     return { confirm: true, error: true };
-  //   }
-  //   return {};
-  // };
-
-  getCaptcha(e: MouseEvent): void {
-    e.preventDefault();
-  }
-
-  constructor(private fb: FormBuilder) {}
-
+  
   ngOnInit(): void {
-    this.validateForm = this.fb.group({
-      names: [null, [Validators.required]],
-      phoneNumberPrefix: ['+86'],
-      phoneNumber: [null, [Validators.required]],
-      website: [null, [Validators.required]],
-      captcha: [null, [Validators.required]],
-      agree: [false],
+    this.categoryAddForm = this.formBuilder.group({
+      categoryName:['',[Validators.required]]
     });
+  }
+
+// Add reward categories API
+  addRewardCategory(){
+    console.log("add reward categoyr===.", this.categoryAddForm.value.categoryName) ;
+    
+    this.submitted = true
+      const data = {
+        'categoryName': this.categoryAddForm.value.categoryName,
+      }
+      this.api.postData(apiUrl._addRewardCategory, data)
+        .subscribe(res => {
+           this.router.navigate(['/rewards']);
+          // this.api.showAlert(value == 'activate' ? 'Active Successfully' : 'Deactive Successfully', '');
+          // this.rewardListingData();
+        })
   }
 
 }

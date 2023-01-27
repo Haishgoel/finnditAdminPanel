@@ -1,34 +1,17 @@
-<form
-  nz-form
-  nzLayout="vertical"
-  [formGroup]="validateForm"
-  (ngSubmit)="submitForm()"
->
+<form  [formGroup]="categoryForm">
   <h1>Edit Category</h1>
-
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="nickname"
-      nzRequired
-      nzTooltipTitle="Employee Full Names"
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Category</label>
+    <input 
+      formControlName="category" 
+      type="category" 
+      class="form-control" 
+      id="exampleFormControlInput1" 
+      placeholder="category"
     >
-      <span>Category Name</span>
-    </nz-form-label>
+  </div>
 
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input employee Fullnames!"
-    >
-      <input nz-input id="nickname" formControlName="names" />
-    </nz-form-control>
-  </nz-form-item>
-
-
-
-
-
-    <button nz-button nzType="default">Save</button>
+  <div style="gap: 10px; display: flex;">  
+    <button type="button" class="btn btn-lg btn-primary" (click)="updateRewardCategory(id)">Save</button>
+  </div>
 </form>

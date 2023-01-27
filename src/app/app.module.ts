@@ -4,8 +4,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { hi_IN } from 'ng-zorro-antd/i18n';
-import { registerLocaleData } from '@angular/common';
-import hi from '@angular/common/locales/hi';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -102,7 +100,7 @@ import { ListingComponent } from './pages/listing/listing/listing.component';
 import { MerchantBannerComponent } from './pages/merchantBanner/merchant-banner/merchant-banner.component';
 import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
-import { MyTeamComponent } from './pages/myTeam/my-team/my-team.component';
+// import { MyTeamComponent } from './pages/myTeam/my-team/my-team.component';
 
 
 
@@ -126,7 +124,7 @@ import { MyTeamComponent } from './pages/myTeam/my-team/my-team.component';
     MerchantBannerComponent,
     EditMerchantBannerComponent,
     EditmediaMerchantBannerComponent,
-    MyTeamComponent
+    // MyTeamComponent
   ],
   imports: [
     BrowserModule,
