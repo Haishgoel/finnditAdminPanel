@@ -4,5 +4,10 @@ export const apiUrl ={
     _editRewardCategory:"admin/v1/reward/reward-category",
     _rewardCategoriesBlock:"admin/v1/reward/reward-category/status",
     _deleteRewardCategories:"admin/v1/reward/reward-category",
+    _deleteReward:"admin/v1/reward",
+    _addReward:"admin/v1/reward",
+    _editReward:"admin/v1/reward",
+    _singleRewardDetail:"admin/v1/reward/",
+    _singleCategoryDetail:"admin/v1/reward/reward-category/",
     _addRewardCategory:"admin/v1/reward/reward-category"
 }

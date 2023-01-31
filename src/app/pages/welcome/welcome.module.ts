@@ -9,12 +9,12 @@ import { AddSubCategoryL2Component } from '../category/add-sub-category-l2/add-s
 import { DetailCategoryComponent } from '../category/detail-category/detail-category.component';
 import { EditCategoryComponent } from '../category/edit-category/edit-category.component';
 import { SingleCategporyDetailComponent } from '../category/single-categpory-detail/single-categpory-detail.component';
-import { DashboardComponent } from '../dashboard/dashboard.component';
+// import { DashboardComponent } from '../dashboard/dashboard.component';
 import { ListingComponent } from '../listing/listing/listing.component';
 import { EditMerchantBannerComponent } from '../merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from '../merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
 import { MerchantBannerComponent } from '../merchantBanner/merchant-banner/merchant-banner.component';
-import { MyTeamComponent } from '../myTeam/my-team/my-team.component';
+// import { MyTeamComponent } from '../myTeam/my-team/my-team.component';
 import { RewardCategoryEditComponent } from '../reward-category-edit/reward-category-edit.component';
 import { RewardsAddComponent } from '../rewards-add/rewards-add.component';
 import { RewardsEditComponent } from '../rewards-edit/rewards-edit.component';
@@ -38,7 +38,7 @@ import { WelcomeComponent } from './welcome.component';
   ],
   declarations: [
     WelcomeComponent,
-    DashboardComponent,
+    // DashboardComponent,
     RewardsComponent,
     RewardsEditComponent,
     RewardsAddComponent,
@@ -54,7 +54,7 @@ import { WelcomeComponent } from './welcome.component';
     MerchantBannerComponent,
     EditMerchantBannerComponent,
     EditmediaMerchantBannerComponent,
-    MyTeamComponent
+    // MyTeamComponent
   ],
   exports: [WelcomeComponent]
 })

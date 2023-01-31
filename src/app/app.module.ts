@@ -84,7 +84,7 @@ import { NzCronExpressionModule } from 'ng-zorro-antd/cron-expression';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 // import { LoginComponent } from './login/login.component';
-// import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RewardsComponent } from './pages/rewards/rewards.component';
 import { RewardsEditComponent} from './pages/rewards-edit/rewards-edit.component';
 import { RewardsAddComponent } from './pages/rewards-add/rewards-add.component';
@@ -100,6 +100,10 @@ import { ListingComponent } from './pages/listing/listing/listing.component';
 import { MerchantBannerComponent } from './pages/merchantBanner/merchant-banner/merchant-banner.component';
 import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
+import { AddRewardComponent } from './pages/add-reward/add-reward.component';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+import { ToastrModule } from 'ngx-toastr';
+import { DetailRewardComponent } from './pages/detail-reward/detail-reward.component';
 // import { MyTeamComponent } from './pages/myTeam/my-team/my-team.component';
 
 
@@ -108,10 +112,12 @@ import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmed
   declarations: [
     AppComponent,
     // LoginComponent,
-    // DashboardComponent,
+    DashboardComponent,
+    DetailRewardComponent,
     RewardsComponent,
     RewardsEditComponent,
     RewardsAddComponent,
+    AddRewardComponent,
     RewardCategoryEditComponent,
     DetailCategoryComponent,
     EditCategoryComponent,
@@ -128,6 +134,8 @@ import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmed
   ],
   imports: [
     BrowserModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    ToastrModule.forRoot(),
     ReactiveFormsModule,
     AppRoutingModule,
     FormsModule,

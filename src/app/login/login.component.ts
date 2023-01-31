@@ -59,6 +59,7 @@ export class LoginComponent implements OnInit {
   validateForm!: UntypedFormGroup;
 
   submitForm(): void {
+    // alert("hello dashboard")
     this.router.navigate(['/dashboard']);
     // if (this.validateForm.valid) {
     //   console.log('submit', this.validateForm.value);

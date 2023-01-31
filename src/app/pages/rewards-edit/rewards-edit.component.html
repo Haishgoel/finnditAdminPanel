@@ -1,96 +1,62 @@
-<form
-  nz-form
-  nzLayout="vertical"
-  [formGroup]="validateForm"
-  (ngSubmit)="submitForm()"
->
+<form [formGroup]="rewardEditForm">
   <h1>Edit Rewards</h1>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Reward Title</label>
+    <input
+      formControlName="rewardTitle"
+      type="rewardTitle"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="rewardTitle"
+    />
+  </div>
 
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="nickname"
-      nzRequired
-      nzTooltipTitle="Employee Full Names"
-    >
-      <span>Reward Title</span>
-    </nz-form-label>
+ 
 
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input employee Fullnames!"
-    >
-      <input nz-input id="nickname" formControlName="names" />
-    </nz-form-control>
-  </nz-form-item>
+  <div class="form-group">
+        <label for="exampleFormControlInput2">Select Reward category</label>
+        <input 
+          formControlName="type" 
+          type="type" 
+          class="form-control" 
+          id="exampleFormControlInput2" 
+          placeholder="type"
+        >
+    </div>
 
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="empNo"
-      nzRequired
-      nzTooltipTitle="Employee Number i.e. 00300305"
-    >
-      <span>Select Reward Category</span>
-    </nz-form-label>
+  <div class="form-group">
+    <label for="exampleFormControlInput3">Reward Points</label>
+    <input
+      formControlName="reedemPoint"
+      type="reedemPoint"
+      class="form-control"
+      id="exampleFormControlInput3"
+      placeholder="reedemPoint"
+    />
+  </div>
 
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input employee Number!"
-    >
-      <input nz-input id="empNo" formControlName="employeeno" />
-    </nz-form-control>
-  </nz-form-item>
+  <div class="form-group">
+    <label for="exampleFormControlInput3">Source Published Date</label>
+    <input
+      formControlName="pubishDate"
+      type="pubishDate"
+      class="form-control"
+      id="exampleFormControlInput4"
+      placeholder="pubishDate"
+    />
+  </div>
 
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="AENo"
-      nzRequired
-      nzTooltipTitle=" Enter AE Number from PMEC or S Number"
-    >
-      <span>Rewards Point</span>
-    </nz-form-label>
+  <div style="gap: 10px; display: flex">
+    <button type="button" class="btn btn-lg btn-primary" (click) = "logOut()">
+      Cancel
+    </button>
 
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input employee Number!"
-    >
-      <input nz-input id="AENo" formControlName="aes" />
-    </nz-form-control>
-  </nz-form-item>
+    <button type="button" class="btn btn-lg btn-primary" (click)="singleRewardDetail(id); patchValue(data)">
+      Preview
+    </button>
 
-  <nz-form-item>
-    <nz-form-label
-      [nzSm]="6"
-      [nzXs]="24"
-      nzFor="AENo"
-      nzRequired
-      nzTooltipTitle=" Enter AE Number from PMEC or S Number"
-    >
-      <span>Source Published Date</span>
-    </nz-form-label>
-    <nz-form-control
-      [nzSm]="14"
-      [nzXs]="24"
-      nzErrorTip="Please input employee Number!"
-    >
-      <input nz-input id="AENo" formControlName="aes" />
-    </nz-form-control>
-  </nz-form-item>
-
-  <!-- <nz-form-item nz-row class="register-area"> -->
-    <button nz-button nzType="default">Cancel</button>
-    <button nz-button nzType="default">Preview</button>
-    <button nz-button nzType="default">Publish</button>
-    <!-- <nz-form-control [nzSpan]="14" [nzOffset]="6">
-      <button nz-button nzType="primary">Cancel</button>
-    </nz-form-control> -->
-  <!-- </nz-form-item> -->
+    <button type="button" class="btn btn-lg btn-primary" (click)="updateReward(id)">
+      Publish
+    </button>
+  </div>
 </form>

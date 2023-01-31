@@ -17,17 +17,24 @@ export class RewardCategoryEditComponent {
   public categoryForm! :FormGroup
   submitted=false
   id:any
+  categoryData: any
   constructor(private formBuilder: FormBuilder, private api: ServicesService, private router: Router, private route: ActivatedRoute) {
   }
 
   
   ngOnInit(): void {
     this.categoryForm = this.formBuilder.group({
-      category:['',[Validators.required]]
+      categoryName:['',[Validators.required]]
     });
     this.route.paramMap.subscribe(params => {
       this.id = params.get('id');
-  });
+    });
+
+    this.api.getDetailByidParams(apiUrl._singleCategoryDetail,this.id)
+    .subscribe((res) => {
+      this.categoryData = res.data;
+      this.categoryForm.controls['categoryName'].setValue(this.categoryData.categoryName) 
+    });
   }
 
 // edit reward categories API
@@ -35,12 +42,12 @@ export class RewardCategoryEditComponent {
     this.submitted = true
       const data = {
         'id':id,
-        'categoryName': this.categoryForm.value.category,
+        'categoryName': this.categoryForm.value.categoryName,
       }
       this.api.editRewardCategory(apiUrl._editRewardCategory, data)
         .subscribe(res => {
            this.router.navigate(['/rewards']);
-          // this.api.showAlert(value == 'activate' ? 'Active Successfully' : 'Deactive Successfully', '');
+           this.api.showAlert('Deactive Successfully', '');
           // this.rewardListingData();
         })
   }

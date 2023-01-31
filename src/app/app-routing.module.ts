@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AddRewardComponent } from './pages/add-reward/add-reward.component';
 // import { LoginComponent } from './login/login.component';
 import { AddParentCategoryComponent } from './pages/category/add-parent-category/add-parent-category.component';
 import { AddSubCategoryL1Component } from './pages/category/add-sub-category-l1/add-sub-category-l1.component';
@@ -8,6 +9,7 @@ import { DetailCategoryComponent } from './pages/category/detail-category/detail
 import { EditCategoryComponent } from './pages/category/edit-category/edit-category.component';
 import { SingleCategporyDetailComponent } from './pages/category/single-categpory-detail/single-categpory-detail.component';
 import { DashboardComponent } from './pages/dashboard/dashboard.component';
+import { DetailRewardComponent } from './pages/detail-reward/detail-reward.component';
 import { ListingComponent } from './pages/listing/listing/listing.component';
 import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from './pages/merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
@@ -21,20 +23,22 @@ import { UsersComponent } from './pages/users/users/users.component';
 
 
 const routes: Routes = [
-  // { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule) },
 
   // { path: '', pathMatch: 'full', redirectTo: '/' },
   // { path: '', redirectTo: '/login', pathMatch: 'full' },
-  // { path: 'login', component: LoginComponent },
-  // { path: 'welcome', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)}
+  // { path: '', component: LoginComponent},
+  // { path: 'dashboard', component: DashboardComponent},
+  // { path: '', loadChildren: () => import('./pages/welcome/welcome.module').then(m => m.WelcomeModule)}
 
 
  
- 
-  { path: '', component: DashboardComponent},
+  // { path: '', component: LoginComponent},
+  { path: 'dashboard', component: DashboardComponent},
   { path: 'rewards', component: RewardsComponent},
-  { path: 'rewards/edit', component: RewardsEditComponent},
-  { path: 'rewards/add', component: RewardsAddComponent},
+  { path: 'rewards/edit/:id', component: RewardsEditComponent},
+  { path: 'category/add', component: RewardsAddComponent},
+  { path: 'rewards/add', component: AddRewardComponent},
+  { path: 'rewards/detail/:id', component: DetailRewardComponent},
   { path: 'rewardscategory/edit/:id', component: RewardCategoryEditComponent},
   { path: 'categories', component: DetailCategoryComponent},
   { path: 'categories/edit', component: EditCategoryComponent},
@@ -47,7 +51,7 @@ const routes: Routes = [
   { path: 'merchantbanner', component: MerchantBannerComponent},
   { path: 'merchantbanner/price/edit', component: EditMerchantBannerComponent},
   { path: 'merchantbanner/media/edit', component: EditmediaMerchantBannerComponent},
-  // { path: 'team', component: MyTeamComponent }
+  // { path: 'team', component: MyTeamComponent}
 ];
 
 @NgModule({

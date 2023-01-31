@@ -32,6 +32,12 @@ export class ServicesService {
     return this.http.put<any>(this.apiEndpoint + url, param);
   }
 
+  getDetailByidParams(url: any, data: any, param = {}) {
+    return this.http.get<any>(this.apiEndpoint + url + data,{
+      params: param,
+    });
+  }
+
   putData(url:any, param: any) {
     return this.http.put<any>(this.apiEndpoint + url, param);
   }
@@ -41,7 +47,13 @@ export class ServicesService {
   }
 
   deleteData(url:any, param: any) {
-    return this.http.delete(this.apiEndpoint +url, param);
+    const options = {
+      // headers: new HttpHeaders({
+      //   "Content-Type": "application/json",
+      // }),
+      body: param,
+    };
+    return this.http.delete(this.apiEndpoint +url, options);
   }
 
   showAlert(title: string, text: string) {

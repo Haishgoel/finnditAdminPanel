@@ -20,8 +20,6 @@ export class RewardsAddComponent {
   id:any
   constructor(private formBuilder: FormBuilder, private api: ServicesService, private router: Router, private route: ActivatedRoute) {
   }
-
-  
   ngOnInit(): void {
     this.categoryAddForm = this.formBuilder.group({
       categoryName:['',[Validators.required]]

@@ -1,0 +1,102 @@
+<form [formGroup]="rewardAddForm">
+  <h1>Add Rewards</h1>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Reward Title</label>
+    <input
+      formControlName="rewardTitle"
+      type="rewardTitle"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="rewardTitle"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput2">Select reward category</label>
+    <ng-multiselect-dropdown
+          name="country"
+          [placeholder]="'Select City'"
+          [data]="countries"
+          formControlName="selCountries"
+          [settings]="dropdownSettings"
+        >
+          <ng-template
+            #optionsTemplate
+            let-item
+            let-option="option"
+            let-id="id"
+            let-isSelected="isSelected"
+          >
+            <div
+              style="
+                padding: 1px 10px;
+                margin-right: 10px;
+                right: 2px;
+                top: -2px;
+              "
+            >
+              <img
+                [src]="getItems[id].image"
+                style="width: 18px; margin: 0 20px;"
+              />
+              <label
+                style="color: #333; min-width: 130px; font-weight: normal;"
+                [ngStyle]="{ 'font-weight': isSelected? 'bold':' normal','color': getItems[id].isDisabled? 'lightgrey': ''}"
+                >{{getItems[id].item_text}}</label
+              >
+            </div>
+          </ng-template>
+          <ng-template #optionSelectedTemplate let-option="option" let-id="id">
+            <div>
+              <img
+                [src]="getItems[id].image"
+                style="width: 18px; margin-right: 2px;"
+              />
+              {{option}}
+            </div>
+        </ng-template>
+    </ng-multiselect-dropdown>
+  </div>
+ 
+
+  <div class="form-group">
+        <label for="exampleFormControlInput2">Select Reward category</label>
+        <input 
+          formControlName="type" 
+          type="type" 
+          class="form-control" 
+          id="exampleFormControlInput2" 
+          placeholder="type"
+        >
+    </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput3">Reward Points</label>
+    <input
+      formControlName="reedemPoint"
+      type="reedemPoint"
+      class="form-control"
+      id="exampleFormControlInput3"
+      placeholder="reedemPoint"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="exampleFormControlInput3">Source Published Date</label>
+    <input
+      formControlName="pubishDate"
+      type="pubishDate"
+      class="form-control"
+      id="exampleFormControlInput4"
+      placeholder="pubishDate"
+    />
+  </div>
+
+  <div style="gap: 10px; display: flex">
+    <button type="button" class="btn btn-lg btn-primary">Cancel</button>
+
+    <button type="button" class="btn btn-lg btn-primary" (click)="addReward()">
+      Publish
+    </button>
+  </div>
+</form>

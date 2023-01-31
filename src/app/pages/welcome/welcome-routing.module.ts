@@ -11,7 +11,7 @@ import { ListingComponent } from '../listing/listing/listing.component';
 import { EditMerchantBannerComponent } from '../merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
 import { EditmediaMerchantBannerComponent } from '../merchantBanner/editmedia-merchant-banner/editmedia-merchant-banner.component';
 import { MerchantBannerComponent } from '../merchantBanner/merchant-banner/merchant-banner.component';
-import { MyTeamComponent } from '../myTeam/my-team/my-team.component';
+// import { MyTeamComponent } from '../myTeam/my-team/my-team.component';
 import { RewardCategoryEditComponent } from '../reward-category-edit/reward-category-edit.component';
 import { RewardsAddComponent } from '../rewards-add/rewards-add.component';
 import { RewardsEditComponent } from '../rewards-edit/rewards-edit.component';
@@ -20,8 +20,8 @@ import { UsersComponent } from '../users/users/users.component';
 import { WelcomeComponent } from './welcome.component';
 
 const routes: Routes = [
-  { path: '', component: WelcomeComponent, children:[
-  { path: 'dashboard', component: DashboardComponent},
+  { path: 'dashboard', component: DashboardComponent, children:[
+  // { path: 'dashboard', component: DashboardComponent},
   { path: 'rewards', component: RewardsComponent},
   { path: 'rewards/edit', component: RewardsEditComponent},
   { path: 'rewards/add', component: RewardsAddComponent},
@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'merchantbanner', component: MerchantBannerComponent},
   { path: 'merchantbanner/price/edit', component: EditMerchantBannerComponent},
   { path: 'merchantbanner/media/edit', component: EditmediaMerchantBannerComponent},
-  { path: 'team', component: MyTeamComponent }
+  // { path: 'team', component: MyTeamComponent }
   ] },
 ];
 

@@ -1,0 +1,8 @@
+<nz-descriptions nzTitle="Rewards Preview" nzLayout="vertical">
+    <nz-descriptions-item nzTitle="Reward Title">{{rewardData.rewardTitle}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Reward Category"></nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Reward Points">{{rewardData.reedemPoint}}</nz-descriptions-item>
+    <nz-descriptions-item nzTitle="Source Published Date" [nzSpan]="2">
+      {{rewardData.pubishDate | date:'dd/MM/yyyy' }}
+    </nz-descriptions-item>
+  </nz-descriptions>
