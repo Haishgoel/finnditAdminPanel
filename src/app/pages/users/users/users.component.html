@@ -1,14 +1,15 @@
-<div style="display: flex; gap: 25px; align-items: center;" >
+<div style="display: flex;align-items: center; justify-content: space-between;" >
     <h1>Users</h1>
+    <input [(ngModel)]="searchTerm" (input)="searchFunc()" (ngModelChange)="onTextChange($event)" type="text" placeholder="Search">
   </div>
   
-  <nz-table #basicTable [nzData]="listOfUsers">
+  <nz-table #basicTable [nzData]="usersData">
     <thead>
       <tr>
         <th>Name</th>
         <th>Email</th>
         <th>Phone Number</th>
-        <th>Location</th>
+        <th>Gender</th>
         <th>Tier</th>
         <th>Points earned</th>
         <th>Points reedemed</th>
@@ -18,29 +19,20 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let data of basicTable.data">
-        <td>{{ data.name }}</td>
-        <td>{{ data.email }}</td>
+      <tr *ngFor="let data of usersData.data.rows">
+        <td>{{ data.fullName}}</td>
+        <td>{{ data.email == null ? 'vannet@gmail.com' : data.email }}</td>
         <td>{{ data.phoneNumber }}</td>
-        <td>{{ data.location }}</td>
-        <td>{{ data.tier }}</td>
-        <td>{{ data.pointEarned }}</td>
-        <td>{{ data.pointReedemed }}</td>
-        <td>{{ data.registeredOn }}</td>
-        <td>{{ data.status }}</td>
+        <td>{{ data.gender=== null ? 'NA': data.gender }}</td>
+        <td>{{ data.tier === null ? 'NA': data.tier }}</td>
+        <td>{{ data.pointsEarned }}</td>
+        <td>{{ data.pointsRedeemed }}</td>
+        <td>{{ data.createdAt | date:'dd/MM/yyyy' }}</td>
+        <td>{{ data.isBlocked === 0 ? 'Active' : 'Inactive' }}</td>
         <td>
   
-          <a (click)="activeDeactivate()" nz-icon [nzType]="'close'"></a>
-          <nz-modal
-            [(nzVisible)]="isCategoryStatus"
-            nzTitle="Deactivate"
-            (nzOnCancel)="handleCancelStatus()"
-            (nzOnOk)="handleOkStatus()"
-          >
-            <ng-container *nzModalContent>
-              <p>Are you sure you want to Deactivate this?</p>
-            </ng-container>
-          </nz-modal>
+          <a (click)="userStatus(data,1)" *ngIf="data.isBlocked" nz-icon [nzType]="'close'"></a>
+          <a (click)="userStatus(data,0)" *ngIf="!data.isBlocked" nz-icon [nzType]="'check'"></a>
           <nz-divider nzType="vertical"></nz-divider>
 
         </td>

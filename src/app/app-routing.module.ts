@@ -49,7 +49,7 @@ const routes: Routes = [
   { path: 'user', component: UsersComponent},
   { path: 'listing', component: ListingComponent},
   { path: 'merchantbanner', component: MerchantBannerComponent},
-  { path: 'merchantbanner/price/edit', component: EditMerchantBannerComponent},
+  { path: 'merchantbanner/price/edit/:id', component: EditMerchantBannerComponent},
   { path: 'merchantbanner/media/edit', component: EditmediaMerchantBannerComponent},
   // { path: 'team', component: MyTeamComponent}
 ];

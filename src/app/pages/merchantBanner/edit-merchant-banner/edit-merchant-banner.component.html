@@ -1,22 +1,40 @@
-<form >
-    <h1>Price Configuration</h1>
-    <div class="form-group">
-      <label for="exampleFormControlInput1">Placement</label>
-      <input type="email" class="form-control" id="exampleFormControlInput1" placeholder="placement">
-    </div>
+<form [formGroup]="priceEditForm">
+  <h1>Price Configuration</h1>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Placement</label>
+    <input
+      type="placement"
+      formControlName="placement"
+      class="form-control"
+      id="exampleFormControlInput1"
+      placeholder="placement"
+    />
+  </div>
 
-    <div class="form-group">
-        <label for="exampleFormControlInput1">Position</label>
-        <input type="position" class="form-control" id="exampleFormControlInput1" placeholder="position">
-      </div>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Position</label>
+    <input
+      type="position"
+      formControlName="position"
+      class="form-control"
+      id="exampleFormControlInput2"
+      placeholder="position"
+    />
+  </div>
 
-      <div class="form-group">
-        <label for="exampleFormControlInput1">Per Impression Price</label>
-        <input type="position" class="form-control" id="exampleFormControlInput1" placeholder="Per Impression Price">
-      </div> 
-    
-    <div style="gap: 10px; display: flex;">  
-      <button type="button" class="btn btn-lg btn-primary" >Cancel</button>
-      <button type="button" class="btn btn-lg btn-primary" >Save</button>
-    </div>
-  </form>
+  <div class="form-group">
+    <label for="exampleFormControlInput1">Per Impression Price</label>
+    <input
+      type="perImpressionPrice"
+      formControlName="perImpressionPrice"
+      class="form-control"
+      id="exampleFormControlInput3"
+      placeholder="Per Impression Price"
+    />
+  </div>
+
+  <div style="gap: 10px; display: flex">
+    <button type="button" class="btn btn-lg btn-primary">Cancel</button>
+    <button type="button" class="btn btn-lg btn-primary" (click)="editPriceMerchant(id)">Save</button>
+  </div>
+</form>

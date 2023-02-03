@@ -96,7 +96,6 @@ changeSortOrder(value: any): void {
         this.currentPage = skip == 0 ? 1 : (skip / 10)
         // this.pagination.totalItems = res.data.count;
         this.merchantPriceData = res;
-        console.log("this.merchant price data===>",this.merchantBannerData)
         // this.merchantBannerData = res.sort(this.soryByPlacement);
 
       });
@@ -110,8 +109,9 @@ changeSortOrder(value: any): void {
 
   //edit list of price Configurations
 
-  editlistOfPriceConfiguration(): void {
-    this.router.navigate(['/merchantbanner/price/edit']);
+  editlistOfPriceConfiguration(data: any): void {
+    var id = data.id
+    this.router.navigate([`/merchantbanner/price/edit/`+ id]);
   }
   // edit MEDIA MERCHANT BANNER
   editMedia(): void {
@@ -120,7 +120,6 @@ changeSortOrder(value: any): void {
 
   // DELETE MERCHANT BANNERS
   deleteMerchantBanner(id: any): void {
-    console.log('delete category===>', id.id);
     swal
       .fire({
         // title: '<h2>' + '</h2>',
@@ -189,8 +188,6 @@ changeSortOrder(value: any): void {
 
   // VISIBILITY STATUS  MERCHANT BANNNER
   visibileStatus(id: any, visibilityStatus: any): void {
-    console.log("visibilityStatus status",visibilityStatus)
-    console.log("id",id.id)
     swal
       .fire({
         title: '<h2>' + visibilityStatus+  '</h2>',

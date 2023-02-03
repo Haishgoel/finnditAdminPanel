@@ -13,5 +13,9 @@ export const apiUrl ={
     _merchantBanner:"admin/v1/merchantbanner/banner",
     _merchantPrice:"admin/v1/merchantbanner/price",
     _merchantApproveStatus:"admin/v1/merchantbanner/approve",
-    _merchantVisibilityStatus:"admin/v1/merchantbanner/visibility"
+    _merchantVisibilityStatus:"admin/v1/merchantbanner/visibility",
+    _merchantPriceSingleDetail:"admin/v1/merchantbanner/price/",
+    _editMerchantPrice:"admin/v1/merchantbanner/price",
+    _usersListing:"admin/v1/customers",
+    _userBlock:"admin/v1/customers/blockUnblock"
 }

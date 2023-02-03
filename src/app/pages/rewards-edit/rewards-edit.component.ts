@@ -96,8 +96,6 @@ export class RewardsEditComponent implements OnInit {
       //   this.toastr.success("update succesfully")
         
       // }
-      console.log("rewardDaatttttt===>",this.rewardData);
-      
       this.api.showAlert('Updated Successfully', '');
       this.router.navigate(['/rewards']);
       // this.rewardListingData();
