@@ -41,14 +41,17 @@
   
     <div #tabsContentRef class="tabs__content" [ngSwitch]="selectedTab">
       <div *ngSwitchCase="'one'" class="tabs__tab">
-        <nz-table #basicTable [nzData]="listOfBanner">
+        <div style="float: right;">
+        <input [(ngModel)]="searchTerm" (input)="searchFunc()" (ngModelChange)="onTextChange($event)" type="text" placeholder="Search">
+      </div>
+        <nz-table #sortTable [nzData]="listOfBanner" >
           <thead>
             <tr>
-              <th>Placement</th>
-              <th>Position</th>
-              <th>Business</th>
-              <th>Frequency</th>
-              <th>Start Date</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Placement</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Position</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Business</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Frequency</th>
+              <th >Start Date</th>
               <th>End Date</th>
               <th>Approve Status</th>
               <th>Visibility Status</th>
@@ -56,40 +59,28 @@
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of basicTable.data">
+            <tr *ngFor="let data of merchantBannerData.data  ">
               <td>{{ data.placement }}</td>
               <td>{{ data.position }}</td>
               <td>{{ data.business }}</td>
               <td>{{ data.frequency }}</td>
-              <td>{{ data.startDate }}</td>
-              <td>{{ data.endDate }}</td>
-              <td>{{ data.approveStatus }}</td>
-              <td>{{ data.visibilityStatus }}</td>
+              <td>{{ data.startDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ data.endDate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ data.approveStatus === 0 ? 'Approved' : 'Pending' }}</td>
+              <td>{{ data.visibilityStatus === 0 ? 'Active' : 'Inactive' }}</td>
   
               <td>
-                <a (click)="activeDeactivateBanner()" nz-icon [nzType]="'close'"></a>
-                <nz-modal
-                  [(nzVisible)]="isBannerStatus"
-                  nzTitle="Deactivate"
-                  (nzOnCancel)="handleCancelBanner()"
-                  (nzOnOk)="handleOkBanner()"
-                >
-                  <ng-container *nzModalContent>
-                    <p>Are you sure you want to Deactivate this?</p>
-                  </ng-container>
-                </nz-modal>
+                <a (click)="approveStatus(data,1)" *ngIf="data.approveStatus" nz-icon [nzType]="'close'"></a>
+                <a (click)="approveStatus(data,0)" *ngIf="!data.approveStatus" nz-icon [nzType]="'check'"></a>
+                
                 <nz-divider nzType="vertical"></nz-divider>
   
-                <a (click)="deleteBanner()" nz-icon [nzType]="'delete'"></a>
-                <nz-modal
-                  [(nzVisible)]="isBannerDelete"
-                  nzTitle="Delete"
-                  (nzOnCancel)="handleCancelBannerDelete()"
-                  (nzOnOk)="handleOkBannerDelete()"
-                >
-                  <p *nzModalContent>Are you sure you want to delete this?</p>
-                </nz-modal>
+                <a (click)="deleteMerchantBanner(data)" nz-icon [nzType]="'delete'"></a>
+                <nz-divider nzType="vertical"></nz-divider>
 
+                <a (click)="visibileStatus(data, 1)" *ngIf="data.visibilityStatus" nz-icon [nzType]="'close'"></a>
+                <a (click)="visibileStatus(data, 0)" *ngIf="!data.visibilityStatus" nz-icon [nzType]="'check'"></a>
+                
                 <nz-divider nzType="vertical"></nz-divider>
               </td>
             </tr>
@@ -98,26 +89,27 @@
       </div>
 
       <div *ngSwitchCase="'two'" class="tabs__tab">
-        <nz-table #basicTable [nzData]="listOfPriceConfiguration">
+        <div style="float: right;">
+          <input [(ngModel)]="searchTerm" (input)="searchFunc()" (ngModelChange)="onTextChange($event)" type="text" placeholder="Search">
+        </div>
+        <nz-table #sortTable [nzData]="listOfPriceConfiguration">
           <thead>
             <tr>
-              <th>Placement</th>
-              <th>Position</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Placement</th>
+              <th [nzSortFn]="true" (nzSortOrderChange)="changeSortOrder($event)">Position</th>
               <th>Per Impression Price</th>
               <th>Action</th>
             </tr>
           </thead>
           <tbody>
-            <tr *ngFor="let data of basicTable.data">
+            <tr *ngFor="let data of merchantPriceData.data">
               <td>{{ data.placement}}</td>
               <td>{{ data.position}}</td>
               <td>{{ data.perImpressionPrice}}</td>
               <td>
                 <a (click)="editlistOfPriceConfiguration()" nz-icon [nzType]="'edit'"></a>
                 <nz-divider nzType="vertical"></nz-divider>
-  
               </td>
-              
             </tr>
           </tbody>
         </nz-table>

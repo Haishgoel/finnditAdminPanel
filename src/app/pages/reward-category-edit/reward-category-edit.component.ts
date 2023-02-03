@@ -7,6 +7,7 @@ import {
 import { Router,ActivatedRoute } from '@angular/router';
 import { apiUrl } from 'src/app/global/global';
 import { ServicesService } from 'src/app/services/services.service';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-reward-category-edit',
@@ -18,7 +19,12 @@ export class RewardCategoryEditComponent {
   submitted=false
   id:any
   categoryData: any
-  constructor(private formBuilder: FormBuilder, private api: ServicesService, private router: Router, private route: ActivatedRoute) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private api: ServicesService,
+    private router: Router,
+    private toastr: ToastrService, 
+    private route: ActivatedRoute) {
   }
 
   
@@ -46,8 +52,9 @@ export class RewardCategoryEditComponent {
       }
       this.api.editRewardCategory(apiUrl._editRewardCategory, data)
         .subscribe(res => {
-           this.router.navigate(['/rewards']);
            this.api.showAlert('Deactive Successfully', '');
+           this.router.navigate(['/rewards']);
+          
           // this.rewardListingData();
         })
   }

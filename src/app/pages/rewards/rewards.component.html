@@ -71,6 +71,7 @@
               <nz-divider nzType="vertical"></nz-divider>
 
               <a (click)="deleteReward(data)" nz-icon [nzType]="'delete'"></a>
+              <nz-divider nzType="vertical"></nz-divider>
             </td>
           </tr>
         </tbody>
@@ -100,8 +101,6 @@
               <a (click)="activeDeactivateCategory(data,0)" *ngIf="!data.status" nz-icon [nzType]="'check'"></a>
 
               <nz-divider nzType="vertical"></nz-divider>
-
-              
 
               <a (click)="deleteRewardCategory(data)" nz-icon [nzType]="'delete'"></a>
 

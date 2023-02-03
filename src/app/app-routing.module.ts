@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AppComponent } from './app.component';
 import { AddRewardComponent } from './pages/add-reward/add-reward.component';
 // import { LoginComponent } from './login/login.component';
 import { AddParentCategoryComponent } from './pages/category/add-parent-category/add-parent-category.component';
@@ -8,7 +9,7 @@ import { AddSubCategoryL2Component } from './pages/category/add-sub-category-l2/
 import { DetailCategoryComponent } from './pages/category/detail-category/detail-category.component';
 import { EditCategoryComponent } from './pages/category/edit-category/edit-category.component';
 import { SingleCategporyDetailComponent } from './pages/category/single-categpory-detail/single-categpory-detail.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { DetailRewardComponent } from './pages/detail-reward/detail-reward.component';
 import { ListingComponent } from './pages/listing/listing/listing.component';
 import { EditMerchantBannerComponent } from './pages/merchantBanner/edit-merchant-banner/edit-merchant-banner.component';
@@ -32,8 +33,7 @@ const routes: Routes = [
 
 
  
-  // { path: '', component: LoginComponent},
-  { path: 'dashboard', component: DashboardComponent},
+  // { path: 'dashboard', component: DashboardComponent},
   { path: 'rewards', component: RewardsComponent},
   { path: 'rewards/edit/:id', component: RewardsEditComponent},
   { path: 'category/add', component: RewardsAddComponent},

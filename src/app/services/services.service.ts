@@ -24,8 +24,8 @@ export class ServicesService {
     return this.http.get(this.apiEndpoint + url)
    }
 
-  rewardCategoryDetail(url: any){
-    return this.http.get(this.apiEndpoint + url)
+  rewardCategoryDetail(url: any, param: any){
+    return this.http.get(this.apiEndpoint + url, {params: param})
    }
    
   editRewardCategory(url:any, param: any) {

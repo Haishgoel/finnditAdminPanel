@@ -84,7 +84,7 @@ import { NzCronExpressionModule } from 'ng-zorro-antd/cron-expression';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 // import { LoginComponent } from './login/login.component';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
+// import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { RewardsComponent } from './pages/rewards/rewards.component';
 import { RewardsEditComponent} from './pages/rewards-edit/rewards-edit.component';
 import { RewardsAddComponent } from './pages/rewards-add/rewards-add.component';
@@ -112,7 +112,7 @@ import { DetailRewardComponent } from './pages/detail-reward/detail-reward.compo
   declarations: [
     AppComponent,
     // LoginComponent,
-    DashboardComponent,
+    // DashboardComponent,
     DetailRewardComponent,
     RewardsComponent,
     RewardsEditComponent,

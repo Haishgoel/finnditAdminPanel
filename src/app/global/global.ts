@@ -9,5 +9,9 @@ export const apiUrl ={
     _editReward:"admin/v1/reward",
     _singleRewardDetail:"admin/v1/reward/",
     _singleCategoryDetail:"admin/v1/reward/reward-category/",
-    _addRewardCategory:"admin/v1/reward/reward-category"
+    _addRewardCategory:"admin/v1/reward/reward-category",
+    _merchantBanner:"admin/v1/merchantbanner/banner",
+    _merchantPrice:"admin/v1/merchantbanner/price",
+    _merchantApproveStatus:"admin/v1/merchantbanner/approve",
+    _merchantVisibilityStatus:"admin/v1/merchantbanner/visibility"
 }

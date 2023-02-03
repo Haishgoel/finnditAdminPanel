@@ -55,7 +55,7 @@ export class RewardsComponent {
     // params = params.append('skip', skip.toString());
     // params = params.append('limit', '10');
     this.api
-      .rewardCategoryDetail(apiUrl._rewardCategoryListing)
+      .rewardDetail(apiUrl._rewardCategoryListing)
       .subscribe((res) => {
         //   this.loading = false;
         // this.currentPage = skip == 0 ? 1 : (skip / 10)
